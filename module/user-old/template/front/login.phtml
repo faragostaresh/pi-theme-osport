@@ -1,0 +1,47 @@
+<?php
+$this->css($this->assetModule('front/front.css'));
+$this->jquery();
+$this->js($this->assetTheme('js/jquery.countdown.min.js'));
+?>
+<div class="clearfix user-login">
+    <div class="page-header">
+        <h1><?php echo _escape($title); ?></h1>
+    </div>
+    <?php if (!empty($message)) { ?>
+        <div class="alert alert-danger">
+            <?php echo _escape($message); ?>
+        </div>
+    <?php } ?>
+
+    <div class="countdown-body">
+        <div class="countdown-timer"></div>
+        <div class="countdown-text">
+            <p>وب سایت  osport در تاریخ ۱۵ اردیبهشت سال ۱۳۹۵ افتتاح خواهد شد، برای شرکت درقرعه کشی ده ها جایزه ورزشی لطفا با کلیک بر روی دکمه ثبت نام و تکمیل فرم ثبت نام ، در وب سایت عضو شوید</p>
+<p> osport  نوآوری و هیجان در ورزش</p>
+            <p><a class="btn btn-primary btn-lg" title="<?php _e('Register'); ?>" href="<?php echo Pi::service('user')->getUrl('register'); ?>"><?php _e('Register'); ?></a></p>
+        </div>
+    </div>
+
+    <?php echo $this->form($form); ?>
+    <div class="user-action-bar">
+        <div class="col-md-offset-2 col-md-10">
+            <ul class="list-inline">
+                <li>
+                    <a title="<?php _e('Find password'); ?>" href="<?php echo Pi::service('user')->getUrl('password'); ?>"><?php _e('Find password'); ?></a>
+                </li>
+                <li>
+                    <a title="<?php _e('Register'); ?>" href="<?php echo Pi::service('user')->getUrl('register'); ?>"><?php _e('Register'); ?></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    $('.countdown-timer').countdown('2016/05/04 15:00:00', function(event) {
+        var $this = $(this).html(event.strftime(''
+            + '<span>%D</span> روز '
+            + '<span>%H</span> ساعت '
+            + '<span>%M</span> دقیقه '
+            + '<span>%S</span> ثانیه'));
+    });
+</script>
